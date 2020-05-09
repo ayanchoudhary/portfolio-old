@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap');
 
 body {
     padding: 0;
@@ -20,6 +21,11 @@ section {
 
 .section-active {
     display: block;
+}
+
+#intro {
+    /* background: url("images/cover.jpeg"); */
+    background-size: auto;
 }
 
 .me .text {
@@ -67,8 +73,37 @@ img {
     font-weight: 600;
 }
 
-.footer {
-    height: 3.5rem;
-    width: 100%;
-    background-color: black;
+.skills {
+    padding-left: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.holder {
+    width: 60%;
+    margin-top: 4rem;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skills div img {
+    height: 75px;
+    width: 75px;
+    padding: 10px;
+}
+
+.skillslabel {
+    margin-top: 2rem;
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.skillsdesc {
+    margin-top: 1rem;
+    text-align: center;
 }

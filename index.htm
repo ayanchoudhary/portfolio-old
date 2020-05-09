@@ -7,20 +7,12 @@
     <title>AyanChoudhary</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
     <link rel="stylesheet" href="swiper.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="card.css">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/project.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script>
-        (function () {
-            window.addEventListener('load', function () {
-                var route = window.location.href.split('#')[1];
-                console.log('hi')
-            });
-        });
-    </script>
 </head>
 
 <body onload="refresh()">
@@ -32,7 +24,7 @@
             <i class="fa fa-briefcase" aria-hidden="true"></i>
         </div>
         <ul>
-            <li><a onclick="linking('intro')" href="#">Home</a></li>
+            <li><a onclick="linking('intro')" href="#intro">Home</a></li>
             <li><a onclick="linking('skills')" href="#skills">Skills</a></li>
             <li><a onclick="linking('projects')" href="#projects">Projects</a></li>
             <li><a onclick="linking('experience')" href="#experience">Experience</a></li>
@@ -44,11 +36,11 @@
                 <div class="me">
                     <div>
                         <div class="text">This is me!!</div>
-                        <img class="showme" src="me.png">
+                        <img class="showme" src="images/me.png">
                     </div>
                     <div class="card">
                         <div class="front">
-                            <img src="ayan.jpg">
+                            <img src="images/ayan.jpg">
                         </div>
                         <div class="back">
                             <div class="details">
@@ -79,6 +71,40 @@
                 </div>
             </div>
         </section>
+        <section id="skills" class="section">
+            <div class="skills">
+                <div class="holder">
+                    <div><img src="icons/icons8-amazon-web-services-100.png"></div>
+                    <div><img src="icons/icons8-android-os-100.png"></div>
+                    <div><img src="icons/icons8-azure-100.png"></div>
+                    <div><img src="icons/icons8-c-programming-100.png"></div>
+                    <div><img src="icons/icons8-c-sharp-logo-100.png"></div>
+                    <div><img src="icons/icons8-css3-100.png"></div>
+                    <div><img src="icons/icons8-django-100.png"></div>
+                    <div><img src="icons/icons8-docker-100.png"></div>
+                    <div><img src="icons/icons8-firebase-100.png"></div>
+                    <div><img src="icons/icons8-github-100.png"></div>
+                    <div><img src="icons/icons8-html-5-100.png"></div>
+                    <div><img src="icons/icons8-java-100.png"></div>
+                    <div><img src="icons/icons8-javascript-100.png"></div>
+                    <div><img src="icons/icons8-kubernetes-100.png"></div>
+                    <div><img src="icons/icons8-mongodb-100.png"></div>
+                    <div><img src="icons/icons8-nodejs-100.png"></div>
+                    <div><img src="icons/icons8-npm-100.png"></div>
+                    <div><img src="icons/icons8-php-logo-100.png"></div>
+                    <div><img src="icons/icons8-python-100.png"></div>
+                    <div><img src="icons/icons8-react-native-100.png"></div>
+                    <div><img src="icons/icons8-travis-ci-100.png"></div>
+                    <div><img src="icons/icons8-visual-studio-100.png"></div>
+                    <div><img src="icons/icons8-visual-studio-code-2019-100.png"></div>
+                    <div><img src="icons/icons8-vue-js-100.png"></div>
+                </div>
+                <div class="skillslabel">Skills</div>
+                <div class="skillsdesc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis laborum assumenda, tempora officia, amet inventore consequatur laudantium sed laboriosam eius eum fugiat et maiores incidunt iure, quam ducimus est tempore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae nostrum nemo sunt ipsam harum a laborum dolorem repellendus suscipit esse temporibus facilis quos tenetur, alias in debitis, sit unde quas!
+                </div>
+            </div>
+        </section>
         <section id="projects" class="section">
             <div class="projects">
                 <div class="works">
@@ -96,6 +122,11 @@
                     </div>
                     <div class="swiper-pagination"></div>
                   </div>
+            </div>
+        </section>
+        <section id="experience" class="section">
+            <div class="experience">
+                fhskdhflkshfskldfjghlskdfj
             </div>
         </section>
     </main>
@@ -133,19 +164,25 @@
         function linking (route) {
             var map = {
                 'intro': $('#intro'),
-                'projects': $('#projects')
-            }
+                'projects': $('#projects'),
+                'skills': $('#skills'),
+                'experience': $('#experience')
+            };
             var a = $('a'),
                 nav = $('nav'),
                 menu = $('nav div'),
                 intro = $('#intro'),
                 projects = $('#projects'),
+                skills = $('#skills'),
+                experience = $('#experience'),
                 main = $('main'),
                 hover = false;
-                intro.removeClass('section-active');
-                projects.removeClass('section-active');
-                map[route].addClass('section-active');
-            var swiper = new Swiper('.swiper-container', {
+            intro.removeClass('section-active');
+            projects.removeClass('section-active');
+            skills.removeClass('section-active');
+            experience.removeClass('section-active');
+            map[route].addClass('section-active');
+            new Swiper('.swiper-container', {
                 effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,
@@ -173,11 +210,13 @@
             var route = window.location.href.split('#')[1];
             var map = {
                 'intro': $('#intro'),
-                'projects': $('#projects')
+                'projects': $('#projects'),
+                'skills': $('#skills'),
+                'experience': $('#experience')
             }
             if (map[route] !== undefined) {
                 map[route].addClass('section-active')
-                var swiper = new Swiper('.swiper-container', {
+                new Swiper('.swiper-container', {
                     effect: 'coverflow',
                     grabCursor: true,
                     centeredSlides: true,
@@ -195,7 +234,10 @@
                 });
             }
             else {
-                $('#intro').addClass('section-active')
+                $('#intro').addClass('section-active');
+                projects.removeClass('section-active');
+                skills.removeClass('section-active');
+                experience.removeClass('section-active');
             }
         }
     </script>
