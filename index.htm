@@ -13,9 +13,17 @@
     <link rel="stylesheet" href="project.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        (function () {
+            window.addEventListener('load', function () {
+                var route = window.location.href.split('#')[1];
+                console.log('hi')
+            });
+        });
+    </script>
 </head>
 
-<body>
+<body onload="refresh()">
     <nav class="menu-activea">
         <div class="navshow">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
@@ -24,14 +32,14 @@
             <i class="fa fa-briefcase" aria-hidden="true"></i>
         </div>
         <ul>
-            <li>Home</li>
-            <li>Skills</li>
-            <li><a href="#">Projects</a></li>
-            <li>Experience</li>
+            <li><a onclick="linking('intro')" href="#">Home</a></li>
+            <li><a onclick="linking('skills')" href="#skills">Skills</a></li>
+            <li><a onclick="linking('projects')" href="#projects">Projects</a></li>
+            <li><a onclick="linking('experience')" href="#experience">Experience</a></li>
         </ul>
     </nav>
     <main>
-        <section id="intro" class="section-active">
+        <section id="intro" class="section">
             <div class="intro">
                 <div class="me">
                     <div>
@@ -75,7 +83,6 @@
             <div class="projects">
                 <div class="works">
                     <span>Some of my beautiful works ...</span><br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, totam, accusamus necessitatibus, possimus perferendis distinctio explicabo vitae architecto maxime tenetur culpa nisi? Tempore, ab earum vitae eveniet dolorum placeat. Accusantium?
                 </div>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -112,6 +119,8 @@
                     if (!open) {
                         nav.addClass('menu-hover');
                         main.addClass('menu-hover');
+                        nav.removeClass('menu-active');
+                        main.removeClass('menu-active');
                     }
                 }, function () {
                     nav.removeClass('menu-hover');
@@ -121,17 +130,53 @@
         })();
     </script>
     <script>
-        (function () {
-            var intro = $('#intro'),
-                projects = $('#projects'),
-                a = $('a')
+        function linking (route) {
+            var map = {
+                'intro': $('#intro'),
+                'projects': $('#projects')
+            }
+            var a = $('a'),
                 nav = $('nav'),
                 menu = $('nav div'),
+                intro = $('#intro'),
+                projects = $('#projects'),
                 main = $('main'),
                 hover = false;
-            a.on('click', function () {
                 intro.removeClass('section-active');
-                projects.addClass('section-active');
+                projects.removeClass('section-active');
+                map[route].addClass('section-active');
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows : true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
+            open = false;
+            nav.removeClass('menu-active');
+            main.removeClass('menu-active');
+            nav.removeClass('menu-hover');
+            main.removeClass('menu-hover');
+        };
+    </script>
+    <script>
+        function refresh() {
+            var route = window.location.href.split('#')[1];
+            var map = {
+                'intro': $('#intro'),
+                'projects': $('#projects')
+            }
+            if (map[route] !== undefined) {
+                map[route].addClass('section-active')
                 var swiper = new Swiper('.swiper-container', {
                     effect: 'coverflow',
                     grabCursor: true,
@@ -148,13 +193,11 @@
                         el: '.swiper-pagination',
                     },
                 });
-                open = !open ? true : false;
-                nav.toggleClass('menu-active');
-                main.toggleClass('menu-active');
-                nav.removeClass('menu-hover');
-                main.removeClass('menu-hover');
-            });
-        })();
+            }
+            else {
+                $('#intro').addClass('section-active')
+            }
+        }
     </script>
 </body>
 
