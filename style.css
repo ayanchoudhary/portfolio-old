@@ -9,6 +9,19 @@ body {
     background: #21212d;
 }
 
+a, a:active, a:visited {
+    text-decoration: none;
+    color: #9dc6d1;
+}
+
+section {
+    display: none;
+}
+
+.section-active {
+    display: block;
+}
+
 .me .text {
     width: auto;
     margin-left: 10rem;

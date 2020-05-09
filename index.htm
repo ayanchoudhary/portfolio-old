@@ -3,11 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>AyanChoudhary</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+    <link rel="stylesheet" href="swiper.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="project.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
@@ -23,13 +26,13 @@
         <ul>
             <li>Home</li>
             <li>Skills</li>
-            <li>Projects</li>
+            <li><a href="#">Projects</a></li>
             <li>Experience</li>
         </ul>
     </nav>
     <main>
-        <section>
-            <div id="intro" class="intro">
+        <section id="intro" class="section-active">
+            <div class="intro">
                 <div class="me">
                     <div>
                         <div class="text">This is me!!</div>
@@ -68,7 +71,28 @@
                 </div>
             </div>
         </section>
+        <section id="projects" class="section">
+            <div class="projects">
+                <div class="works">
+                    <span>Some of my beautiful works ...</span><br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, totam, accusamus necessitatibus, possimus perferendis distinctio explicabo vitae architecto maxime tenetur culpa nisi? Tempore, ab earum vitae eveniet dolorum placeat. Accusantium?
+                </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide"></div>
+                      <div class="swiper-slide"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+            </div>
+        </section>
     </main>
+    <script type="text/javascript" src="swiper.min.js"></script>
     <script>
         (function () {
             var nav = $('nav'),
@@ -94,6 +118,42 @@
                     main.removeClass('menu-hover');
                 }
             );
+        })();
+    </script>
+    <script>
+        (function () {
+            var intro = $('#intro'),
+                projects = $('#projects'),
+                a = $('a')
+                nav = $('nav'),
+                menu = $('nav div'),
+                main = $('main'),
+                hover = false;
+            a.on('click', function () {
+                intro.removeClass('section-active');
+                projects.addClass('section-active');
+                var swiper = new Swiper('.swiper-container', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflowEffect: {
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows : true,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                });
+                open = !open ? true : false;
+                nav.toggleClass('menu-active');
+                main.toggleClass('menu-active');
+                nav.removeClass('menu-hover');
+                main.removeClass('menu-hover');
+            });
         })();
     </script>
 </body>
